@@ -2,14 +2,14 @@
 </script>
 
 <div class="field">
-    <label class="label">Name</label>
+    <div class="label">Name</div>
     <div class="control">
         <input class="input" type="text" placeholder="Text input" />
     </div>
 </div>
 
 <div class="field">
-    <label class="label">Email</label>
+    <div class="label">Email</div>
     <div class="control">
         <input class="input is-danger" type="email" placeholder="Email input" />
     </div>
@@ -29,7 +29,7 @@
 </div>
 
 <div class="field">
-    <label class="label">Address</label>
+    <div class="label">Address</div>
     <div class="control">
         <textarea class="textarea" placeholder="Address" />
     </div>

@@ -56,10 +56,12 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 800,
         "resizable": true,
         "title": "Addresses",
-        "width": 800
+        "width": 1200,
+        "minHeight": 650,
+        "minWidth": 1000
       }
     ]
   }
