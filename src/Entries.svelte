@@ -1,5 +1,7 @@
 <script type="ts">
-    export let items = ["asdas", "12312", "asdas", "qwe", "qweqw", "fdgdf", "dfg"];
+    let items = ["asdas", "12312", "asdas", "qwe", "qweqw", "fdgdf", "dfg"];
+
+    export let selectedItem;
 </script>
 
 <div class="panel">
@@ -12,7 +14,7 @@
     </div>
 
     {#each items as item}
-        <a class="panel-block">
+        <a class="panel-block" on:click="{() => selectedItem = item}">
             {item}
         </a>
     {/each}
