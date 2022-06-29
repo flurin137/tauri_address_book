@@ -1,10 +1,11 @@
 <script lang="ts">
     import { invoke } from "@tauri-apps/api/tauri";
+    import type { Address } from "./address";
     import Entries from "./Entries.svelte";
     import Entry from "./Entry.svelte";
 
-    let selectedItem;
-    let getAddressesPromise = invoke("get_addresses");
+    let selectedItem: Address;
+    let getAddressesPromise : Promise<Address[]> = invoke("get_addresses");
 </script>
 
 <main class="columns">

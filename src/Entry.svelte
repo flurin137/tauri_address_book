@@ -1,19 +1,22 @@
 <script type="ts">
-    export let shownItem;
+    import type { Address } from "./address";
+    import { invoke } from "@tauri-apps/api/tauri";
+
+    export let shownItem: Address;
 </script>
 
 {#if shownItem}
     <div class="field">
         <div class="label">Name</div>
         <div class="control">
-            <input class="input" type="text" placeholder="Text input" />
+            <input class="input" type="text" placeholder="Text input" bind:value={shownItem.name} />
         </div>
     </div>
 
     <div class="field">
         <div class="label">Email</div>
         <div class="control">
-            <input class="input is-danger" type="email" placeholder="Email input" />
+            <input class="input is-danger" type="email" placeholder="Email input" bind:value={shownItem.name} />
         </div>
     </div>
 
@@ -33,7 +36,7 @@
     <div class="field">
         <div class="label">Address</div>
         <div class="control">
-            <textarea class="textarea" placeholder="Address" />
+            <textarea class="textarea" placeholder="Address" bind:value={shownItem.address} />
         </div>
     </div>
 
@@ -48,10 +51,7 @@
 
     <div class="field is-grouped">
         <div class="control">
-            <button class="button is-link">Submit</button>
-        </div>
-        <div class="control">
-            <button class="button is-link is-light">Cancel</button>
+            <button class="button is-link" on:click={() => invoke("save_address", { address: shownItem })}>Save</button>
         </div>
     </div>
 {/if}
