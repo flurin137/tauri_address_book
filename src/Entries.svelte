@@ -1,8 +1,8 @@
 <script type="ts">
-    let items = ["asdas", "12312", "asdas", "qwe", "qweqw", "fdgdf", "dfg"];
-
     export let selectedItem;
+    export let entries;
 </script>
+
 
 <div class="panel">
     <p class="panel-heading">Addresses</p>
@@ -13,9 +13,9 @@
         </p>
     </div>
 
-    {#each items as item}
+    {#each entries as item}
         <a class="panel-block" on:click="{() => selectedItem = item}">
-            {item}
+            {item.name}
         </a>
     {/each}
 
