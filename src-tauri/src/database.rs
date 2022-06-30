@@ -32,7 +32,19 @@ impl Database {
         self.addresses.clone()
     }
 
-    pub fn set_address(&mut self, address: Address) {
-        self.addresses.push(address);
+    pub fn upsert_address(&mut self, address: Address) {
+        if let Some(found_address) = self.addresses.iter_mut().find(|d| d.id == address.id)
+        {
+            *found_address = address;
+        }
+        else
+        {
+            self.addresses.push(address);
+        }
+    }
+
+    pub fn delete_address(&mut self, address: Address)
+    {
+        self.addresses.retain(|d| d.id != address.id);
     }
 }

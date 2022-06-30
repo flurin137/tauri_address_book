@@ -8,6 +8,8 @@
     let selectedItem: Address;
     let addresses: Address[];
 
+    $: console.log(selectedItem);
+
     onMount(async () => {
         addresses = await invoke("get_addresses");
     });
@@ -20,7 +22,7 @@
 <main class="columns">
     <div class="column is-narrow">
         {#if addresses}
-            <Entries bind:selectedItem entries={addresses} />
+            <Entries bind:selectedItem entries={addresses} on:refresh={update}/>
         {:else}
             <p>...waiting</p>
         {/if}

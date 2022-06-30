@@ -11,7 +11,7 @@ pub struct Address {
     pub gender: Gender,
 }
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub enum Gender {
     Male,
     Female,
@@ -19,6 +19,6 @@ pub enum Gender {
 
 impl Display for Address {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result {
-        write!(f, "{} | {} | {}", self.id, self.name, self.address)
+        write!(f, "{} | {} | {} | {:?}", self.id, self.name, self.address, self.gender)
     }
 }

@@ -6,7 +6,18 @@ export interface Address {
     gender: Gender,
 }
 
-enum Gender {
-    Male,
-    Female
+export enum Gender {
+    Male = "Male",
+    Female = "Female"
+}
+
+export function newAddress() : Address
+{
+    return {
+        id: crypto.randomUUID(),
+        name: "",
+        email: "",
+        address: "",
+        gender: Gender.Female,
+    }
 }
