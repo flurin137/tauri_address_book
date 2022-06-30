@@ -1,6 +1,9 @@
 <script type="ts">
-    export let selectedItem;
-    export let entries;
+import type { Address } from "./address";
+
+
+    export let selectedItem : Address;
+    export let entries: Address[];
 </script>
 
 

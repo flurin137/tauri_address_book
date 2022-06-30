@@ -1,25 +1,32 @@
 <script lang="ts">
     import { invoke } from "@tauri-apps/api/tauri";
+    import { onMount } from "svelte";
     import type { Address } from "./address";
     import Entries from "./Entries.svelte";
     import Entry from "./Entry.svelte";
 
     let selectedItem: Address;
-    let getAddressesPromise : Promise<Address[]> = invoke("get_addresses");
+    let addresses: Address[];
+
+    onMount(async () => {
+        addresses = await invoke("get_addresses");
+    });
+
+    async function update() {
+        addresses = await invoke("get_addresses");
+    }
 </script>
 
 <main class="columns">
     <div class="column is-narrow">
-        {#await getAddressesPromise}
-            <p>...waiting</p>
-        {:then addresses}
+        {#if addresses}
             <Entries bind:selectedItem entries={addresses} />
-        {:catch error}
-            <p style="color: red">{error.message}</p>
-        {/await}
+        {:else}
+            <p>...waiting</p>
+        {/if}
     </div>
     <div class="column">
-        <Entry bind:shownItem={selectedItem} />
+        <Entry bind:shownItem={selectedItem} on:refresh={update} />
     </div>
 </main>
 

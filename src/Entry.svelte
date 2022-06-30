@@ -1,8 +1,16 @@
 <script type="ts">
     import type { Address } from "./address";
     import { invoke } from "@tauri-apps/api/tauri";
+    import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
     export let shownItem: Address;
+
+    function saveAddress(){
+        invoke("save_address", { address: shownItem });
+        dispatch("refresh");
+    }
 </script>
 
 {#if shownItem}
@@ -51,7 +59,7 @@
 
     <div class="field is-grouped">
         <div class="control">
-            <button class="button is-link" on:click={() => invoke("save_address", { address: shownItem })}>Save</button>
+            <button class="button is-link" on:click={saveAddress}>Save</button>
         </div>
     </div>
 {/if}
