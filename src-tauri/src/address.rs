@@ -1,5 +1,5 @@
+use serde::{Deserialize, Serialize};
 use std::fmt::*;
-use serde::{Serialize, Deserialize};
 use uuid::Uuid;
 
 #[derive(Serialize, Deserialize, Clone)]
@@ -19,6 +19,10 @@ pub enum Gender {
 
 impl Display for Address {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result {
-        write!(f, "{} | {} | {} | {:?}", self.id, self.name, self.address, self.gender)
+        write!(
+            f,
+            "{} | {} | {} | {:?}",
+            self.id, self.name, self.address, self.gender
+        )
     }
 }

@@ -5,6 +5,8 @@
     import Entries from "./Entries.svelte";
     import Entry from "./Entry.svelte";
 
+    import { listen } from "@tauri-apps/api/event";
+
     let selectedItem: Address;
     let addresses: Address[];
 
@@ -12,6 +14,10 @@
 
     onMount(async () => {
         addresses = await invoke("get_addresses");
+        await invoke("init_process");
+        await listen("Yeeehaaa", (event) => {
+            console.log(event);
+        });
     });
 
     async function update() {
@@ -22,7 +28,7 @@
 <main class="columns">
     <div class="column is-narrow">
         {#if addresses}
-            <Entries bind:selectedItem entries={addresses} on:refresh={update}/>
+            <Entries bind:selectedItem entries={addresses} on:refresh={update} />
         {:else}
             <p>...waiting</p>
         {/if}

@@ -33,18 +33,14 @@ impl Database {
     }
 
     pub fn upsert_address(&mut self, address: Address) {
-        if let Some(found_address) = self.addresses.iter_mut().find(|d| d.id == address.id)
-        {
+        if let Some(found_address) = self.addresses.iter_mut().find(|d| d.id == address.id) {
             *found_address = address;
-        }
-        else
-        {
+        } else {
             self.addresses.push(address);
         }
     }
 
-    pub fn delete_address(&mut self, address: Address)
-    {
+    pub fn delete_address(&mut self, address: Address) {
         self.addresses.retain(|d| d.id != address.id);
     }
 }
