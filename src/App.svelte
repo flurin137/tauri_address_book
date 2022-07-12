@@ -25,18 +25,25 @@
     }
 </script>
 
-<main class="columns">
-    <div class="column is-narrow">
-        {#if addresses}
-            <Entries bind:selectedItem entries={addresses} on:refresh={update} />
+<div class="drawer drawer-mobile">
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+
+    <div class="drawer-content flex flex-col items-center justify-start">
+        {#if selectedItem}
+            <Entry bind:shownItem={selectedItem} on:refresh={update} />
         {:else}
-            <p>...waiting</p>
+            <p>ASDJKHASKJH ASDJKH</p>
         {/if}
     </div>
-    <div class="column">
-        <Entry bind:shownItem={selectedItem} on:refresh={update} />
-    </div>
-</main>
+
+    {#if addresses}
+        <Entries bind:selectedItem entries={addresses} on:refresh={update} />
+    {:else}
+        <p>...waiting</p>
+    {/if}
+</div>
+
+<main class="container" />
 
 <style>
     :root {
