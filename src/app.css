@@ -2,3 +2,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.scrollbar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    @apply bg-base-300;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary;
+    border-radius: 100vh;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-focus;
+}
