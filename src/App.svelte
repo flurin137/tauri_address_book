@@ -25,7 +25,7 @@
     }
 </script>
 
-<div class="flex grow gap-4  p-2">
+<div class="flex flex-row grow gap-4 p-2">
     <side class="flex w-80 flex-none">
         {#if addresses}
             <Entries bind:selectedItem entries={addresses} on:refresh={update} />
@@ -38,7 +38,7 @@
                 <Entry bind:shownItem={selectedItem} on:refresh={update} />
             </div>
         {:else}
-            <div class="flex justify-center items-center">
+            <div class="grow justify-center items-center">
                 <p>ASDJKHASKJH ASDJKH</p>
             </div>
         {/if}
@@ -49,5 +49,4 @@
     :root {
         height: 100%;
     }
-
 </style>

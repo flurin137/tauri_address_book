@@ -36,7 +36,7 @@
         </button>
     </div>
 
-    <ul class="menu grow overflow-auto overscroll-contain">
+    <ul class="menu grow overflow-y-scroll overscroll-contain my-2 scrollbar">
         {#each entries as item}
             <li on:click={() => selectItem(item)}>
                 <div class="flex">
