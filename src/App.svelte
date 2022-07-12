@@ -25,37 +25,29 @@
     }
 </script>
 
-<div class="drawer drawer-mobile">
-    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+<div class="flex grow gap-4">
+    <side class="flex w-80 flex-none">
+        {#if addresses}
+            <Entries bind:selectedItem entries={addresses} on:refresh={update} />
+        {/if}
+    </side>
 
-    <div class="drawer-content flex flex-col items-center justify-start">
+    <div class="grow">
         {#if selectedItem}
-            <Entry bind:shownItem={selectedItem} on:refresh={update} />
+            <div class="flex flex-col items-start">
+                <Entry bind:shownItem={selectedItem} on:refresh={update} />
+            </div>
         {:else}
-            <p>ASDJKHASKJH ASDJKH</p>
+            <div class="flex justify-center items-center">
+                <p>ASDJKHASKJH ASDJKH</p>
+            </div>
         {/if}
     </div>
-
-    {#if addresses}
-        <Entries bind:selectedItem entries={addresses} on:refresh={update} />
-    {:else}
-        <p>...waiting</p>
-    {/if}
 </div>
-
-<main class="container" />
 
 <style>
     :root {
         height: 100%;
     }
 
-    main {
-        text-align: center;
-        padding: 1em;
-        margin: 0 auto;
-        min-height: 100%;
-        vertical-align: inherit;
-        overflow-y: auto;
-    }
 </style>
