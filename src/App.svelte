@@ -25,7 +25,7 @@
     }
 </script>
 
-<div class="flex grow gap-4">
+<div class="flex grow gap-4  p-2">
     <side class="flex w-80 flex-none">
         {#if addresses}
             <Entries bind:selectedItem entries={addresses} on:refresh={update} />
