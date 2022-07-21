@@ -5,6 +5,10 @@ const config = {
         extend: {},
     },
 
+    daisyui: {
+        themes: ["cyberpunk"],
+    },
+
     plugins: [require("daisyui")],
 };
 
